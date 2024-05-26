@@ -1,11 +1,25 @@
 <html>
     <%= render_partial "base/_head.html.erb" %>
+    <script>
+        function deleteExpenditure(id) {
+            fetch("http://localhost:9292/expenditures/"+id, {
+                    method: 'DELETE',
+                }
+            );
+
+            document.getElementById("delete-button").innerHTML = "Deleted"
+        }
+    </script>
     <body>
         <div>
             <h1><%= @title %></h1>
-            <p><a href="/dogs">Back to the list</a></p>
+            <p><a href="/expenditures">Back to the list</a></p>
             <p>
-                Dog #n <%= @dog.id %>, name: <strong><%= @dog.name %></strong>
+                Expenditure <strong><%= @expenditure.id %></strong><br />
+                Name: <strong><%= @expenditure.name %></strong><br />
+                Date: <strong><%= DateTime.strptime(@expenditure.date, "%Y-%m-%d %H:%M:%S").strftime("%d-%m-%Y %H:%M") %></strong><br />
+                Price: <strong><%= @expenditure.price %></strong><br />
+                <div id="delete-button">Delete: <a href="javascript: deleteExpenditure('<%= @expenditure.id %>')"><strong><%= @expenditure.price %></strong></a><div>
             </p>
         </div>
     </body>

@@ -2,6 +2,7 @@
 
 require_relative './base_controller'
 require './app/model/expenditure'
+require 'pry'
 
 # class for controller handling expenditures
 class ExpendituresController < BaseController
@@ -13,8 +14,12 @@ class ExpendituresController < BaseController
 
   def show
     @expenditure = Expenditure.find(params[:id])
-    @title = "#{@expenditure.name}'s page"
-    build_response render_template
+    if @expenditure
+      @title = "#{@expenditure.name}"
+      build_response render_template
+    else
+      not_found
+    end
   end
 
   def new
@@ -23,8 +28,19 @@ class ExpendituresController < BaseController
   end
 
   def create
-    expenditure = Expenditure.new(name: params['expenditure']['name'])
-    expenditure.save
-    redirect_to "expenditures/#{expenditure.id}"
+    attributes = [params['expenditure']['name'],
+                  "#{params['expenditure']['date'].gsub('T', ' ')}:00",
+                  params['expenditure']['price']]
+    if Expenditure.validate(attributes)
+      expenditure_id = Expenditure.save(attributes)
+      redirect_to "expenditures/#{expenditure_id}"
+    else
+      redirect_to 'expenditures'
+    end
+  end
+
+  def destroy
+    Expenditure.destroy(params[:id])
+    build_response '', 204
   end
 end

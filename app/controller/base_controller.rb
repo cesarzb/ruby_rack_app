@@ -20,7 +20,6 @@ class BaseController
 
   def render_template(name = params[:action])
     templates_dir = self.class.name.downcase.sub('controller', '')
-    # binding.pry
     template_file = File.join(templates_dir, "#{name}.html.erb")
 
     file_path = template_file_path_for(template_file)
@@ -62,5 +61,9 @@ class BaseController
 
   def params
     request.params
+  end
+
+  def not_found(msg = 'Page not found')
+    [404, { 'Content-Type' => 'text/plain' }, [msg]]
   end
 end

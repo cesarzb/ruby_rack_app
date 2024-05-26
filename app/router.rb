@@ -37,7 +37,8 @@ class Router
       action = @request.get? ? :index : :create
       [nil, action]
     else
-      [fragment, :show]
+      action = @request.get? ? :show : :destroy
+      [fragment, action]
     end
   end
 

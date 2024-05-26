@@ -3,10 +3,22 @@
     <body>
         <div>
             <h1><%= @title %></h1>
-            <form action="/dogs" method="POST">
+            <form action="/expenditures" method="POST">
                 <div>
-                    <label for="dog_name">The dog's name</label>
-                    <input type="text" name="dog[name]" id="dog_name">
+                    <label for="expenditure_name">Name</label>
+                    <input type="text" name="expenditure[name]" id="expenditure_name">
+                </div>
+                <div>
+                    <label for="expenditure_date">Date
+                    </label>
+                    <input
+                    type="datetime-local"
+                    id="expenditure_date"
+                    name="expenditure[date]" />
+                </div>
+                <div>
+                    <label for="expenditure_price">Price</label>
+                    <input type="text" name="expenditure[price]" id="expenditure_price">
                 </div>
                 <input type="submit" name="commit" value="create">
             </form>

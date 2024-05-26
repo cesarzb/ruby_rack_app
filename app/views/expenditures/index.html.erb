@@ -3,12 +3,12 @@
     <body>
         <div>
             <h1><%= @title %></h1>
-            <p><a href="/dogs/new">Create a new dog</a></p>
+            <p><a href="/expenditures/new">Add new expenditure</a></p>
             <ul>
-                <% @dogs.each do |dog| %>
+                <% @expenditures.each do |exp| %>
                     <li>
-                        <a href="/dogs/<%= dog.id %>">
-                            <%= "#{dog.id} - #{dog.name}" %>
+                        <a href="/expenditures/<%= exp.id %>">
+                            <%= "#{exp.id} - #{exp.name}" %>
                         </a>
                     </li>
                 <% end %>    
