@@ -11,6 +11,11 @@ class Base
     new(result) if result
   end
 
+  def self.find_by(search)
+    result = Operation.find_by(name.downcase, search)
+    result.map { |record| new(record) }
+  end
+
   def self.all
     Operation.all(name.downcase).map { |record| new(record) }
   end

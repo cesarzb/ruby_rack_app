@@ -1,10 +1,10 @@
 require 'sqlite3'
 
-class Migration1
+class Migration2_2
   def self.run
     SQLite3::Database.new 'data.db' do |db|
       db.execute <<~SQL
-        drop table expenditure
+        drop table user
       SQL
     end
   end

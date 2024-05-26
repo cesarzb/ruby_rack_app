@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 # class responsible for routing to the correct method
+require 'pry'
+require 'pry-nav'
 class Router
   def initialize(request)
     @request = request
   end
 
-  def route!
+  def route!(session)
     if (klass = controller_class)
       add_route_info_to_request_params!
 
-      controller = klass.new(@request)
+      controller = klass.new(@request, session)
       action = @route_info[:action]
 
       if controller.respond_to?(action)

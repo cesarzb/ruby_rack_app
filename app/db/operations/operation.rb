@@ -37,6 +37,16 @@ class Operation
     db.execute(query, [id])
   end
 
+  def self.find_by(table, search)
+    key = search.keys.first
+
+    query = <<~SQL
+      select * from #{table}
+      where #{key} = ?
+    SQL
+    db.execute(query, [search[key]])
+  end
+
   def self.all(table)
     db.execute <<~SQL
       select * from #{table}

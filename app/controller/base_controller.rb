@@ -3,17 +3,38 @@
 require 'pry'
 require 'pry-nav'
 require 'erb'
+require './app/model/user'
+require 'bcrypt'
 
 # controller containing methods useful for all controllers
 class BaseController
   attr_reader :request
+  attr_accessor :session
 
-  def initialize(request)
+  def initialize(request, session)
     @request = request
+    @session = session
   end
 
   def index
     build_response render_template
+  end
+
+  # authentiaction logic
+  def hash_password(password)
+    BCrypt::Password.create(password).to_s
+  end
+
+  def test_password(password, hash)
+    BCrypt::Password.new(hash) == password
+  end
+
+  def current_user
+    @current_user ||= (User.find(session.fetch(:user_id)) if session.key?(:user_id))
+  end
+
+  def authenticate!
+    redirect_to '/sessions/new'
   end
 
   private

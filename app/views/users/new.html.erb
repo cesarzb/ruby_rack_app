@@ -1,0 +1,19 @@
+<html>
+    <%= render_partial "base/_head.html.erb" %>
+    <body>
+        <div>
+            <h1><%= @title %></h1>
+            <form action="/users" method="POST">
+                <div>
+                    <label for="user_username">Name</label>
+                    <input type="text" name="user[username]" id="user_username">
+                </div>
+                <div>
+                    <label for="user_password">Password</label>
+                    <input type="password" name="user[password]" id="user_password">
+                </div>
+                <input type="submit" name="commit" value="create">
+            </form>
+        </div>
+    </body>
+</html>

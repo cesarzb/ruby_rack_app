@@ -11,6 +11,7 @@ class Application
   end
 
   def serve_request(request)
-    Router.new(request).route!
+    session = request.env['rack.session']
+    Router.new(request).route!(session)
   end
 end

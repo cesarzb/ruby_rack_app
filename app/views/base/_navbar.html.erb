@@ -1,0 +1,23 @@
+<script>
+    function logOut() {
+        fetch("http://localhost:9292/sessions/42", {
+                method: 'DELETE',
+            }
+        ).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            document.getElementById("delete-button").innerHTML = "Logged out";
+            window.location.href = response.url;
+        })
+       .catch(error => {
+            console.error("Couldn't log you out at the moment:", error);
+        });
+
+    }
+</script>
+<div>
+    <% if current_user %>
+        <div id="delete-button"><a href="javascript: logOut()">Logout</a></div>
+    <% end %>
+</div>
