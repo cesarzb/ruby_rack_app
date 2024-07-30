@@ -2,7 +2,6 @@
 
 require_relative './base_controller'
 require './app/model/user'
-require 'pry'
 
 # class for controller handling users
 class UsersController < BaseController

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-require 'pry-nav'
 require 'erb'
 require './app/model/user'
 require 'bcrypt'

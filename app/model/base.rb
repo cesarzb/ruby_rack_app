@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 require_relative '../db/operations/operation'
 
 # base class specifying database communication interface for models

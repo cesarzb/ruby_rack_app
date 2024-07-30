@@ -2,7 +2,6 @@
 
 require_relative './base_controller'
 require './app/model/expenditure'
-require 'pry'
 
 # class for controller handling expenditures
 class ExpendituresController < BaseController

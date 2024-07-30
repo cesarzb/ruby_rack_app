@@ -2,8 +2,6 @@
 
 require_relative './base_controller'
 require './app/model/user'
-require 'pry'
-require 'pry-nav'
 
 # class for controller handling users
 class SessionsController < BaseController

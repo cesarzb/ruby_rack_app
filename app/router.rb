@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 # class responsible for routing to the correct method
-require 'pry'
-require 'pry-nav'
 class Router
   def initialize(request)
     @request = request

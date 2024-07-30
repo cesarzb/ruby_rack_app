@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 require 'sqlite3'
 
 # class responsible for executing queries against database
