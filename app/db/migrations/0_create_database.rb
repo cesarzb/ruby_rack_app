@@ -5,3 +5,5 @@ class Migration0
     SQLite3::Database.new 'data.db'
   end
 end
+
+Migration0.run

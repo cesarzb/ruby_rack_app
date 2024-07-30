@@ -13,3 +13,5 @@ class Migration2
     end
   end
 end
+
+Migration2.run

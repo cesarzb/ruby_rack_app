@@ -14,3 +14,5 @@ class Migration1
     end
   end
 end
+
+Migration1.run

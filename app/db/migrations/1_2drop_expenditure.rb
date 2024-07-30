@@ -9,3 +9,5 @@ class Migration1_2
     end
   end
 end
+
+Migration1_2.run

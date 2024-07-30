@@ -18,7 +18,8 @@ class SessionsController < BaseController
       redirect_to '/'
     else
       @error = 'Username or password incorrect'
-      builde_response render_template :new
+      redirect_to '/sessions/new'
+      # build_response render_template :new
     end
   end
 
